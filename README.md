@@ -17,8 +17,32 @@ sudo apt-get install texlive-full
 # Install pypi requirements
 pip install -r requirements.txt
 ```
-
+- `sudo apt-get install textlive-full` 명령은 **Ubuntu** Linux 명령으로 윈도우에서는 다음의 링크에서 다운로로드 받아 설치해야 한다. 설치하는 시간이 상당히 오래 걸린다
 - **textlive-full**, **window** 버전 댜운로드 : https://www.tug.org/texlive/windows.html
+- 설치 후 다음과 같은 경고가 나오면 업데이트 실행
+
+```bash
+*** PLEASE READ THIS WARNING ***********************************
+
+The following (inessential) packages failed to install properly:
+
+  tex4ht
+
+You can fix this by running this command:
+  
+to complete the installation.
+
+However, if the problem was a failure to download (by far the
+most common cause), check that you can connect to the chosen mirror
+in a browser; you may need to specify a mirror explicitly.
+******************************************************************
+```
+
+```bash
+tlmgr update --all --reinstall-forcibly-removed
+```
+
+
 
 - 패키지 설치중 오류가 발생하면 아나콘다 가상머신을 삭제한 후 다시 시작한다
 - 아나콘다 가상머신 폴더 : `C:\Users\USERNAME\anaconda3\envs`
