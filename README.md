@@ -1,4 +1,5 @@
 # 프로젝트 시작하기
+
 - 윈도우 powershell 에서 실행할 경우 많은 오류가 발생 `git-scm` 설치한 후 `git bash shell` 에서 작업
 
 - github 에서 클론
@@ -20,13 +21,14 @@ pip install -r requirements.txt
 ```
 
 - bash 에서 activate 오류 발생하면 `source` 명령 실행 후 `conda activate`
+
 ```bash
 CondaError: Run 'conda init' before 'conda activate'
 ```
+
 ```bash
 source ~/.bash_profile
 ```
-
 
 - `sudo apt-get install textlive-full` 명령은 **Ubuntu** Linux 명령으로 윈도우에서는 다음의 링크에서 다운로로드 받아 설치해야 한다. 설치하는 시간이 상당히 오래 걸린다
 - **textlive-full**, **window** 버전 댜운로드 : https://www.tug.org/texlive/windows.html
@@ -40,7 +42,7 @@ The following (inessential) packages failed to install properly:
   tex4ht
 
 You can fix this by running this command:
-  
+
 to complete the installation.
 
 However, if the problem was a failure to download (by far the
@@ -56,8 +58,6 @@ tlmgr update --all --reinstall-forcibly-removed
 - 패키지 설치중 오류가 발생하면 아나콘다 가상머신을 삭제한 후 다시 시작한다
 - 아나콘다 가상머신 폴더 : `C:\Users\USERNAME\anaconda3\envs`
 
-
-
 ### CUDA 11.8
 
 ```bash
@@ -70,34 +70,9 @@ pip3 install numpy --pre torch torchvision torchaudio --force-reinstall --index-
 pip3 install numpy --pre torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cu117
 ```
 
-### CPU 버전 torch, CUDA 머신이 없을 경우 CPU 모드로 설정하기
-
-```bash
-pip3 install numpy --pre torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cpu
-```
-- conda 로 설치하기
-```bash
-conda install pytorch torchvision torchaudio cpuonly -c pytorch
-```
-
-- 설치중 오류가 나면 다음 명령 실행후 다시 실행
-```bash
-pip3 uninstall aider-chat
-pip3 uninstall filelock
-pip3 uninstall networkx
-pip3 uninstall pillow
-pip3 uninstall fsspec
-
-pip3 install aider-chat==0.53.0
-pip3 install fsspec==2024.6.1
-pip3 install pillow==10.4.0
-pip3 install networkx==3.2.1
-pip3 install filelock==3.15.4
-```
-
 ## Setup NanoGPT
 
-# Prepare NanoGPT data
+### Prepare NanoGPT data
 
 ```bash
 python data/enwik8/prepare.py
@@ -115,15 +90,32 @@ cd templates/nanoGPT
 python experiment.py --out_dir run_0
 python plot.py
 ```
-- CUDA GPU 없는 경우 실행오류 발생, CPU 버전으로 변경
+
+### CPU 버전 torch, CUDA 머신이 없을 경우 CPU 모드로 설정하기
+
+```bash
+pip3 install numpy --pre torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cpu
+```
+
+- conda 로 설치하기
+
+```bash
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+```
+
+#### CUDA GPU 없는 경우 실행오류 발생, CPU 버전으로 변경
+
+- CPU 버전으로 실행할 경우 모델학습 단계에서 문제가 발생한다.
+
 ```bash
 Error loading "C:\ProgramData\anaconda3\envs\ai_scientist\Lib\site-packages\torch\lib\fbgemm.dll
 ```
+
+- CPU 버전으로 실행하기 위한 pyTorch 설치 : 모두 실패
+
 ```bash
 pip3 uninstall torch torchvision torchaudio
 pip3 install numpy --pre torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cpu
 pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
-
 pip3 install torch==2.3.1+cpu torchvision==0.18.1+cpu torchaudio==2.3.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
-
 ```
