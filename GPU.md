@@ -54,6 +54,8 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 ```
 
+- CUDA 버전별 torch 링크 확인 : https://pytorch.org/get-started/locally/
+
 - `conda create` 실행 오류 발생할 경우
 
 ```bash
