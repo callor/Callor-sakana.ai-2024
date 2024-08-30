@@ -23,13 +23,19 @@ Cuda compilation tools, release 12.6, V12.6.68
 Build cuda_12.6.r12.6/compiler.34714021_0
 ```
 
-- GPU CUDA 활성화 확인
+### GPU CUDA 활성화 확인
 
 ```bash
 nvidia-smi
 ```
 
 ![alt text](image.png)
+
+### GPU 활성화하기
+
+```bash
+conda install cuda -c nvidia
+```
 
 ### 아나콘다 가상환경 시작 및 패키지 설치
 
@@ -41,8 +47,12 @@ sudo apt-get install texlive-full
 
 # Install pypi requirements
 # requirements.txt 파일에서 torch 항목 주석처리
-pip install -r requirements.txt
+pip3 install -r requirements.txt
+```
 
+- CUDA 버전별 torch 링크 확인 하여 명령 실행 : https://pytorch.org/get-started/locally/
+
+```bash
 # Install torch v 12.4
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
@@ -53,8 +63,6 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 ```
-
-- CUDA 버전별 torch 링크 확인 : https://pytorch.org/get-started/locally/
 
 - `conda create` 실행 오류 발생할 경우
 
@@ -107,6 +115,8 @@ in a browser; you may need to specify a mirror explicitly.
 
 ### Prepare NanoGPT data
 
+- 모델 학습 및 문서 생성을 하기전에 다음의 스크립트를 먼저 실행해야 한다.
+
 ```bash
 python data/enwik8/prepare.py
 python data/shakespeare_char/prepare.py
@@ -116,7 +126,6 @@ python data/text8/prepare.py
 ## Create baseline runs (machine dependent)
 
 - Set up NanoGPT baseline run
-- 참고: 먼저 위의 준비 스크립트를 실행해야 합니다!
 
 ```bash
 cd templates/nanoGPT
@@ -124,23 +133,16 @@ python experiment.py --out_dir run_0
 python plot.py
 ```
 
-- 모델학습 과정에서 다음과 같은 오류 발생
+- 모델학습 과정에서 다음과 같은 오류(fbgemm.dll 찾지 못함) 발생하면  
+  Visual Studio 설치해주어야 한다. 설치옵션에서 **C/C++ 개발환경을 반드시 체크하고 설치한다**
 
 ```bash
 $ python experiment.py --out_dir run_0
 Traceback (most recent call last):
-  File "C:\Users\callor\Documents\workspace\Callor-sakana.ai-2024\AI-Scientist\templates\nanoGPT\experiment.py", line 10, in <module>
+  File "C:\Users\USERNAME\Documents\workspace\Callor-sakana.ai-2024\AI-Scientist\templates\nanoGPT\experiment.py", line 10, in <module>
     import torch
-  File "C:\Users\callor\.conda\envs\ai_scientist\Lib\site-packages\torch\__init__.py", line 148, in <module>
+  File "C:\Users\USERNAME\.conda\envs\ai_scientist\Lib\site-packages\torch\__init__.py", line 148, in <module>
     raise err
-OSError: [WinError 126] 지정된 모듈을 찾을 수 없습니다. Error loading "C:\Users\callor\.conda\envs\ai_scientist\Lib\site-packages\torch\lib\fbgemm.dll" or one of its dependencies.
+OSError: [WinError 126] 지정된 모듈을 찾을 수 없습니다. Error loading "C:\Users\USERNAME\.conda\envs\ai_scientist\Lib\site-packages\torch\lib\fbgemm.dll" or one of its dependencies.
 (ai_scientist)
-```
-
-- Visual Studio 설치해주어야 한다. 설치옵션에서 **C/C++ 개발환경을 반드시 체크하고 설치한다**
-
-## GPU 활성화하기
-
-```bash
-conda install cuda -c nvidia
 ```
