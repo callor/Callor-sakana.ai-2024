@@ -1,14 +1,10 @@
-# GPU 버전 프로젝트 시작하기
+# Sakana.ai GPU 버전 Windows 프로젝트 시작하기
 
+- 윈도우 **Powershell** 에서 실행할 경우 많은 오류가 발생 하므로  
+  **git-scm** 설치한 후 **git bash shell** 에서 작업
 - Sakana.ai 공식 사이트 : https://sakana.ai/ai-scientist/
 
-### 프로젝트 소스코드 다운로드 받기
-
-- github.com 에서 클론
-
-```bash
-git clone https://github.com/SakanaAI/AI-Scientist.git
-```
+## 프로젝트 환경 만들기
 
 ### 모델학습을 위하여 CUDA 지원 고성능 GPU 그래픽카드 설치
 
@@ -48,6 +44,16 @@ nvidia-smi
 conda install cuda -c nvidia
 ```
 
+## 프로젝트 시작하기
+
+### 프로젝트 소스코드 다운로드 받기
+
+- github.com 에서 클론
+
+```bash
+git clone https://github.com/SakanaAI/AI-Scientist.git
+```
+
 ### 아나콘다 가상환경 시작 및 Dependencies Package 설치
 
 ```bash
@@ -59,45 +65,42 @@ conda activate ai_scientist
 pip3 install -r requirements.txt
 ```
 
-- CUDA 버전별 torch 링크 확인 하여 명령 실행 : https://pytorch.org/get-started/locally/
-
-```bash
-# Install torch v 12.4
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
-
-# Install torch 11.8
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
-# Install torch 12.1
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
-```
-
-- `conda create` 실행 시 다음 오류 발생할 경우
+- `conda create` 실행 시 다음 오류 발생할 경우 clean 실행 후 다시 `conda create`
 
 ```bash
 bash: C:\ProgramDatanaconda3\Scripts: No such file or directory
-```
 
-- 다음 명령으로 clean 실행 후 다시 `conda create`
-
-```bash
+# Anaconda Environment Clean
 conda clean -i
+conda create -n ai_scientist python=3.11
 ```
 
-- bash 에서 activate 오류 발생할 경우
+- `conda activate` 명령 실행 시 `CondaError` 오류가 발생할 경우  
+  `source` 명령 실행 후 다시 `conda activate`
 
 ```bash
 CondaError: Run 'conda init' before 'conda activate'
+
+# Shell Profile 환경 설정
+source ~/.bash_profile
+conda activate ai_scientist
 ```
 
-- `source` 명령 실행 후 `conda activate`
+- CUDA 버전별 torch 링크 확인 하여 명령 실행 : https://pytorch.org/get-started/locally/
 
 ```bash
-source ~/.bash_profile
+# Install torch 11.8
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# Install torch v 12.4
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+
+# Install torch 12.1
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
-### Tex Tool 설치
+### Tex Tool(PDF 생성 도구) 설치
 
 ##### Install pdflatex for Ubuntu
 
@@ -105,10 +108,12 @@ source ~/.bash_profile
 sudo apt-get install texlive-full
 ```
 
+- `sudo apt-get install textlive-full` 명령은 **Ubuntu** Linux 명령으로 윈도우에서는 다음과 같이 다운로드 하여 설치한다.
+
 ##### Windows 버전 다운로드 및 설치
 
 - **textlive-full**, **window** 버전 댜운로드 : `https://www.tug.org/texlive/windows.html`
-- `sudo apt-get install textlive-full` 명령은 **Ubuntu** Linux 명령으로 윈도우에서는 위의 링크에서 다운로드 받아 설치해야 한다. 설치하는 시간이 상당히 오래 걸린다
+- 위의 링크에서 다운로드 받아 설치해야 한다. 설치하는 시간이 상당히 오래 걸린다.
 
 - 설치 후 다음과 같은 경고가 나오는 경우
 
@@ -135,7 +140,7 @@ in a browser; you may need to specify a mirror explicitly.
 tlmgr update --all --reinstall-forcibly-removed
 ```
 
-## Setup NanoGPT
+## Setup NanoGPT 모델 학습 및 생성
 
 ### Prepare NanoGPT data
 
@@ -163,7 +168,8 @@ python plot.py
   Visual Studio 설치해주어야 한다. 설치옵션에서 **C/C++ 개발환경을 반드시 체크하고 설치한다**
 
 ```bash
-$ python experiment.py --out_dir run_0
+# python experiment.py --out_dir run_0 명령실행 오류
+
 Traceback (most recent call last):
   File "C:\Users\USERNAME\Documents\workspace\Callor-sakana.ai-2024\AI-Scientist\templates\nanoGPT\experiment.py", line 10, in <module>
     import torch
