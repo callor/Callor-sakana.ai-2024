@@ -1,18 +1,29 @@
 # GPU 버전 프로젝트 시작하기
 
-- github 에서 클론
+- Sakana.ai 공식 사이트 : https://sakana.ai/ai-scientist/
+
+### 프로젝트 소스코드 다운로드 받기
+
+- github.com 에서 클론
 
 ```bash
 git clone https://github.com/SakanaAI/AI-Scientist.git
 ```
 
-### nVIDIA GPU 설정하기
+### 모델학습을 위하여 CUDA 지원 고성능 GPU 그래픽카드 설치
 
-- 그래픽 카드에 맞는 드라이버를 설치
+- TITAN, Quadro 급의 GPU 설치된 그래픽카드를 선택하는 것이 좋다
+- CUDA 지원 그래픽 카드 찾기 : https://developer.nvidia.com/cuda-gpus
+- `Compute Capability` 가 최소 **7.x** 이상의 성능을 가진 그래픽카드를 선택해야 한다
+- 그래픽 카드에 맞는 드라이버를 설치 : https://www.nvidia.com/ko-kr/geforce/drivers/
+
+### nVIDIA GPU CUDA 소프트웨어 설치하기
+
 - CUDA ToolKit 다운로드 : https://developer.nvidia.com/cuda-downloads
 - cuDNN 다운로드 : https://developer.nvidia.com/rdp/cudnn-archive
 - cuDNN 다운로드 파일 압축 해제하고, `C: / Program Files / NVIDIA GPU Computing Toolkit / CUDA / v12.6` 폴더에 붙이기
-- GPU CODA 컴파일러 확인
+
+### GPU CODA 컴파일러 등 설치 확인
 
 ```bash
 $ nvcc -V
@@ -31,19 +42,17 @@ nvidia-smi
 
 ![alt text](image.png)
 
-### GPU 활성화하기
+### 아나콘다 GPU 활성화하기
 
 ```bash
 conda install cuda -c nvidia
 ```
 
-### 아나콘다 가상환경 시작 및 패키지 설치
+### 아나콘다 가상환경 시작 및 Dependencies Package 설치
 
 ```bash
 conda create -n ai_scientist python=3.11
 conda activate ai_scientist
-# Install pdflatex
-sudo apt-get install texlive-full
 
 # Install pypi requirements
 # requirements.txt 파일에서 torch 항목 주석처리
@@ -64,7 +73,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 ```
 
-- `conda create` 실행 오류 발생할 경우
+- `conda create` 실행 시 다음 오류 발생할 경우
 
 ```bash
 bash: C:\ProgramDatanaconda3\Scripts: No such file or directory
@@ -76,23 +85,32 @@ bash: C:\ProgramDatanaconda3\Scripts: No such file or directory
 conda clean -i
 ```
 
-- bash 에서 activate 오류 발생하면 `source` 명령 실행 후 `conda activate`
+- bash 에서 activate 오류 발생할 경우
 
 ```bash
 CondaError: Run 'conda init' before 'conda activate'
 ```
 
+- `source` 명령 실행 후 `conda activate`
+
 ```bash
 source ~/.bash_profile
 ```
 
-- `sudo apt-get install textlive-full` 명령은 **Ubuntu** Linux 명령으로 윈도우에서는 다음의 링크에서 다운로로드 받아 설치해야 한다. 설치하는 시간이 상당히 오래 걸린다
-- **textlive-full**, **window** 버전 댜운로드 : https://www.tug.org/texlive/windows.html
-- 설치 후 다음과 같은 경고가 나오면 업데이트 실행
+### Tex Tool 설치
+
+##### Install pdflatex for Ubuntu
 
 ```bash
-tlmgr update --all --reinstall-forcibly-removed
+sudo apt-get install texlive-full
 ```
+
+##### Windows 버전 다운로드 및 설치
+
+- **textlive-full**, **window** 버전 댜운로드 : `https://www.tug.org/texlive/windows.html`
+- `sudo apt-get install textlive-full` 명령은 **Ubuntu** Linux 명령으로 윈도우에서는 위의 링크에서 다운로드 받아 설치해야 한다. 설치하는 시간이 상당히 오래 걸린다
+
+- 설치 후 다음과 같은 경고가 나오는 경우
 
 ```bash
 *** PLEASE READ THIS WARNING ***********************************
@@ -109,6 +127,12 @@ However, if the problem was a failure to download (by far the
 most common cause), check that you can connect to the chosen mirror
 in a browser; you may need to specify a mirror explicitly.
 ******************************************************************
+```
+
+- 업데이트 명령 실행
+
+```bash
+tlmgr update --all --reinstall-forcibly-removed
 ```
 
 ## Setup NanoGPT
@@ -132,6 +156,8 @@ cd templates/nanoGPT
 python experiment.py --out_dir run_0
 python plot.py
 ```
+
+### Visual Studio 설치
 
 - 모델학습 과정에서 다음과 같은 오류(fbgemm.dll 찾지 못함) 발생하면  
   Visual Studio 설치해주어야 한다. 설치옵션에서 **C/C++ 개발환경을 반드시 체크하고 설치한다**
