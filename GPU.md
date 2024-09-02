@@ -83,6 +83,7 @@ CondaError: Run 'conda init' before 'conda activate'
 
 # Shell Profile 환경 설정
 source ~/.bash_profile
+conda init
 conda activate ai_scientist
 ```
 
