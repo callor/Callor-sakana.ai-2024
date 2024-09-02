@@ -4,6 +4,12 @@
   **git-scm** 설치한 후 **git bash shell** 에서 작업
 - Sakana.ai 공식 사이트 : https://sakana.ai/ai-scientist/
 
+
+## Visual Studio 설치
+
+- https://visualstudio.microsoft.com/ko/downloads/ 에서 다운로드 후 설치  
+  설치옵션에서 **C/C++ 개발환경을 반드시 체크하고 설치한다**
+
 ## 프로젝트 환경 만들기
 
 ### 모델학습을 위하여 CUDA 지원 고성능 GPU 그래픽카드 설치
@@ -16,8 +22,10 @@
 ### nVIDIA GPU CUDA 소프트웨어 설치하기
 
 - CUDA ToolKit 다운로드 : https://developer.nvidia.com/cuda-downloads
+- CUDA Archive 에서 12.4.x 다운로드 : https://developer.nvidia.com/cuda-toolkit-archive  
+CUDA 최신 버전은 12.6.x 이지만, torch 에서 지원하는 버전은 12.4.x 이므로 Archive 에서 12.4.x 를 다운받아 설치한다
 - cuDNN 다운로드 : https://developer.nvidia.com/rdp/cudnn-archive
-- cuDNN 다운로드 파일 압축 해제하고, `C: / Program Files / NVIDIA GPU Computing Toolkit / CUDA / v12.6` 폴더에 붙이기
+- cuDNN 다운로드 파일 압축 해제하고, `C: / Program Files / NVIDIA GPU Computing Toolkit / CUDA / v12.4` 폴더에 붙이기
 
 ### GPU CODA 컴파일러 등 설치 확인
 
@@ -25,9 +33,9 @@
 $ nvcc -V
 nvcc: NVIDIA (R) Cuda compiler driver
 Copyright (c) 2005-2024 NVIDIA Corporation
-Built on Wed_Aug_14_10:26:51_Pacific_Daylight_Time_2024
-Cuda compilation tools, release 12.6, V12.6.68
-Build cuda_12.6.r12.6/compiler.34714021_0
+Built on Thu_Mar_28_02:30:10_Pacific_Daylight_Time_2024
+Cuda compilation tools, release 12.4, V12.4.131
+Build cuda_12.4.r12.4/compiler.34097967_0
 ```
 
 ### GPU CUDA 활성화 확인
@@ -35,14 +43,8 @@ Build cuda_12.6.r12.6/compiler.34714021_0
 ```bash
 nvidia-smi
 ```
+![alt text](image-3.png)
 
-![alt text](image.png)
-
-### 아나콘다 GPU 활성화하기
-
-```bash
-conda install cuda -c nvidia
-```
 
 ## 프로젝트 시작하기
 
@@ -86,6 +88,14 @@ source ~/.bash_profile
 conda activate ai_scientist
 ```
 
+### 아나콘다 GPU 활성화하기
+
+```bash
+conda install cuda -c nvidia
+conda install cuda -c nvidia/label/cuda-12.4
+
+```
+
 - CUDA 버전별 torch 링크 확인 하여 명령 실행 : https://pytorch.org/get-started/locally/
 
 ```bash
@@ -98,6 +108,9 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 # Install torch 12.1
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu121
+
 ```
 
 ### Tex Tool(PDF 생성 도구) 설치
@@ -157,24 +170,7 @@ python data/text8/prepare.py
 - Set up NanoGPT baseline run
 
 ```bash
-cd templates/nanoGPT
-python experiment.py --out_dir run_0
+cd templates/nanoGPT && python experiment.py --out_dir run_0
 python plot.py
 ```
 
-### Visual Studio 설치
-
-- 모델학습 과정에서 다음과 같은 오류(fbgemm.dll 찾지 못함) 발생하면  
-  Visual Studio 설치해주어야 한다. 설치옵션에서 **C/C++ 개발환경을 반드시 체크하고 설치한다**
-
-```bash
-# python experiment.py --out_dir run_0 명령실행 오류
-
-Traceback (most recent call last):
-  File "C:\Users\USERNAME\Documents\workspace\Callor-sakana.ai-2024\AI-Scientist\templates\nanoGPT\experiment.py", line 10, in <module>
-    import torch
-  File "C:\Users\USERNAME\.conda\envs\ai_scientist\Lib\site-packages\torch\__init__.py", line 148, in <module>
-    raise err
-OSError: [WinError 126] 지정된 모듈을 찾을 수 없습니다. Error loading "C:\Users\USERNAME\.conda\envs\ai_scientist\Lib\site-packages\torch\lib\fbgemm.dll" or one of its dependencies.
-(ai_scientist)
-```
