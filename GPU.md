@@ -84,6 +84,7 @@ conda create -n ai_scientist python=3.11
 CondaError: Run 'conda init' before 'conda activate'
 
 # Shell Profile 환경 설정
+conda init bash
 source ~/.bash_profile
 conda activate ai_scientist
 ```
