@@ -100,17 +100,8 @@ conda install cuda -c nvidia/label/cuda-12.4
 - CUDA 버전별 torch 링크 확인 하여 명령 실행 : https://pytorch.org/get-started/locally/
 
 ```bash
-# Install torch 11.8
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
 # Install torch v 12.4
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
-
-
-# Install torch 12.1
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
-pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu121
 
 ```
 
