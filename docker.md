@@ -21,7 +21,7 @@ docker run --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project
 
 ## interactive
 ```bash
-docker run -it -e --env-file=/app/ai-project/.env --entrypoint /bin/bash t4646/ai-scientist:20240817
+docker run -it --env-file=/app/ai-project/.env --entrypoint /bin/bash t4646/ai-scientist:20240817
 ```
 
 ## docker 수정 후 실행중인 컨테이너 다른이름으로 이미지 복제 저장
