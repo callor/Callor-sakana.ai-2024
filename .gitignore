@@ -1,2 +1,9 @@
-.env.*
+# Environments
 .env
+.venv
+.venv_jax
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
