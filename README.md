@@ -14,3 +14,5 @@
 ### :dolphin: [Running the CPU version of the document: Not recommended](./CPU.md)
 
 ### :water_buffalo: [Troubleshooting Documentation: In progress](./error.md)
+
+### CopyRight &copy; callor@callor.com
