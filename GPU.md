@@ -23,7 +23,7 @@
 - Download 12.4.x from CUDA Archive : https://developer.nvidia.com/cuda-toolkit-archive  
   The latest version of CUDA is 12.6.x, but the version supported by torch is 12.4.x, so download 12.4.x from the Archive and install it.
 - cuDNN Download : https://developer.nvidia.com/rdp/cudnn-archive
-- Unzip the cuDNN download file and paste it into the `C: / Program Files / NVIDIA GPU Computing Toolkit / CUDA / v12.4` folder.
+- Unzip the cuDNN download file and paste it into the `C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.4` folder.
 
 ### Check installation of GPU CUDA compiler
 
