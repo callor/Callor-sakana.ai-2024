@@ -15,4 +15,4 @@
 
 ### :water_buffalo: [Troubleshooting Documentation: In progress](./error.md)
 
-##### <address>CopyRight &copy; callor@callor.com</address>
+### :racehorse: CopyRight &copy; callor@callor.com
