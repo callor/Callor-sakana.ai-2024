@@ -1,6 +1,5 @@
 # 오류 해결방법 모음
 
-
 ### Visual Studio 설치
 
 - 모델학습 과정에서 다음과 같은 오류(fbgemm.dll 찾지 못함) 발생하면  
@@ -19,6 +18,7 @@ OSError: [WinError 126] 지정된 모듈을 찾을 수 없습니다. Error loadi
 ```
 
 ## but CUDA is not available
+
 ```bash
 $ python experiment.py --out_dir run_0
 tokens per iteration will be: 16,384
@@ -33,7 +33,7 @@ Traceback (most recent call last):
                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
-![alt text](image.png)
+![alt text]./images/(image.png)
 
 ```bash
 # Install torch v 12.4
@@ -42,6 +42,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 ```
 
 ## 컴파일 오류 1
+
 ```bash
 tokens per iteration will be: 16,384
 found vocab_size = 65 (inside ../../data\shakespeare_char\meta.pkl)
@@ -60,11 +61,11 @@ Traceback (most recent call last):
   File "C:\Users\callor\anaconda3\envs\ai_scientist\Lib\site-packages\torch\_dynamo\repro\after_dynamo.py", line 129, in __call__
     compiled_gm = compiler_fn(gm, example_inputs)
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-```                  
+```
 
-![alt text](image-2.png)
+![alt text](./images/image-2.png)
 
-```py    
+```py
 # 461 라인 근처에서 다음 코드를 찾아서 아래와 같이 변경
 # initialize a GradScaler. If enabled=False scaler is a no-op
 scaler = torch.cuda.amp.GradScaler(enabled=(dtype == "float16"))
@@ -102,15 +103,18 @@ Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
 You can suppress this exception and fall back to eager by setting:
     import torch._dynamo
     torch._dynamo.config.suppress_errors = True
-```                                       
-![alt text](image-1.png)
+```
+
+![alt text](./images/image-1.png)
 
 ```bash
 pip install https://huggingface.co/madbuda/triton-windows-builds/resolve/main/triton-2.1.0-cp311-cp311-win_amd64.whl
 ```
+
 ```bash
 ![alt text](image-4.png)
 ```
+
 - `C:\Users\USERNAME\AppData\Local\Temp` 폴더내용 지우고 다시 실행
 
 ```bash

@@ -1,33 +1,31 @@
-# Sakana.ai GPU 버전 Windows 프로젝트 시작하기
+# Getting started with Sakana.ai GPU version Windows project
 
-- 윈도우 **Powershell** 에서 실행할 경우 많은 오류가 발생 하므로  
-  **git-scm** 설치한 후 **git bash shell** 에서 작업
-- Sakana.ai 공식 사이트 : https://sakana.ai/ai-scientist/
+- When running in Windows **Powershell**, many errors occur, so let's work in **git bash shell** after installing **git-scm**.
+- Sakana.ai Official Site : https://sakana.ai/ai-scientist/
 
+## Visual Studio Install
 
-## Visual Studio 설치
+- Download and Install from https://visualstudio.microsoft.com/ko/downloads/
+  Make sure to check and install the **C/C++ development environment** in the installation options.
 
-- https://visualstudio.microsoft.com/ko/downloads/ 에서 다운로드 후 설치  
-  설치옵션에서 **C/C++ 개발환경을 반드시 체크하고 설치한다**
+## Creating a project environment
 
-## 프로젝트 환경 만들기
+### Install a high-performance **GPU** graphics card that supports **CUDA** for model training.
 
-### 모델학습을 위하여 CUDA 지원 고성능 GPU 그래픽카드 설치
+- It is recommended to choose a graphics card with a TITAN or Quadro-class GPU installed.
+- Find a CUDA-enabled graphics card : https://developer.nvidia.com/cuda-gpus
+- You must select a graphics card with a **Compute Capability** of at least **7.x** or higher.
+- Install the driver for your graphics card : https://www.nvidia.com/ko-kr/geforce/drivers/
 
-- TITAN, Quadro 급의 GPU 설치된 그래픽카드를 선택하는 것이 좋다
-- CUDA 지원 그래픽 카드 찾기 : https://developer.nvidia.com/cuda-gpus
-- `Compute Capability` 가 최소 **7.x** 이상의 성능을 가진 그래픽카드를 선택해야 한다
-- 그래픽 카드에 맞는 드라이버를 설치 : https://www.nvidia.com/ko-kr/geforce/drivers/
+### Installing nVIDIA GPU CUDA Software
 
-### nVIDIA GPU CUDA 소프트웨어 설치하기
+- CUDA ToolKit Download : https://developer.nvidia.com/cuda-downloads
+- Download 12.4.x from CUDA Archive : https://developer.nvidia.com/cuda-toolkit-archive  
+  The latest version of CUDA is 12.6.x, but the version supported by torch is 12.4.x, so download 12.4.x from the Archive and install it.
+- cuDNN Download : https://developer.nvidia.com/rdp/cudnn-archive
+- Unzip the cuDNN download file and paste it into the `C: / Program Files / NVIDIA GPU Computing Toolkit / CUDA / v12.4` folder.
 
-- CUDA ToolKit 다운로드 : https://developer.nvidia.com/cuda-downloads
-- CUDA Archive 에서 12.4.x 다운로드 : https://developer.nvidia.com/cuda-toolkit-archive  
-CUDA 최신 버전은 12.6.x 이지만, torch 에서 지원하는 버전은 12.4.x 이므로 Archive 에서 12.4.x 를 다운받아 설치한다
-- cuDNN 다운로드 : https://developer.nvidia.com/rdp/cudnn-archive
-- cuDNN 다운로드 파일 압축 해제하고, `C: / Program Files / NVIDIA GPU Computing Toolkit / CUDA / v12.4` 폴더에 붙이기
-
-### GPU CODA 컴파일러 등 설치 확인
+### Check installation of GPU CUDA compiler
 
 ```bash
 $ nvcc -V
@@ -38,89 +36,102 @@ Cuda compilation tools, release 12.4, V12.4.131
 Build cuda_12.4.r12.4/compiler.34097967_0
 ```
 
-### GPU CUDA 활성화 확인
+### Check GPU CUDA activation
 
 ```bash
 nvidia-smi
 ```
-![alt text](image-3.png)
 
+![alt text](./images/image-3.png)
 
-## 프로젝트 시작하기
+## Start a project
 
-### 프로젝트 소스코드 다운로드 받기
+### Download project source code
 
-- github.com 에서 클론
+- Clone From github.com
 
 ```bash
 git clone https://github.com/SakanaAI/AI-Scientist.git
 ```
 
-### 아나콘다 가상환경 시작 및 Dependencies Package 설치
+- Always update to the latest project before running the project (running launch_scientist.py).
+- Run the following command in the **AI-Scientist** folder:
+
+```bash
+git pull
+```
+
+### Start Anaconda Virtual Environment and Install Dependencies Package
 
 ```bash
 conda create -n ai_scientist python=3.11
 conda activate ai_scientist
 
 # Install pypi requirements
-# requirements.txt 파일에서 torch 항목 주석처리
 pip3 install -r requirements.txt
 ```
 
-- `conda create` 실행 시 다음 오류 발생할 경우 clean 실행 후 다시 `conda create`
+- If the following error occurs when running `conda create`, run clean and then `conda create` again.
 
 ```bash
+# Error Message
 bash: C:\ProgramDatanaconda3\Scripts: No such file or directory
+```
 
-# Anaconda Environment Clean
+```bash
+# Solution : Anaconda Environment Clean
 conda clean -i
 conda create -n ai_scientist python=3.11
 ```
 
-- `conda activate` 명령 실행 시 `CondaError` 오류가 발생할 경우  
-  `source` 명령 실행 후 다시 `conda activate`
+- If a `CondaError` error occurs when running the `conda activate` command
+  After running the `source` command, run `conda activate` again
 
 ```bash
 CondaError: Run 'conda init' before 'conda activate'
 
-# Shell Profile 환경 설정
+# Shell Profile Preferences
 conda init bash
 source ~/.bash_profile
 conda activate ai_scientist
 ```
 
-### 아나콘다 GPU 활성화하기
+### Activate Anaconda GPU
+
+- Run this only if you have problems recognizing your GPU when running **launch_scientist**
 
 ```bash
+# Install according to the CUDA version from the following commands.
+# If you installed it in this document environment, the second command is
 conda install cuda -c nvidia
 conda install cuda -c nvidia/label/cuda-12.4
-
 ```
 
-- CUDA 버전별 torch 링크 확인 하여 명령 실행 : https://pytorch.org/get-started/locally/
+- Check the torch link for each CUDA version and execute the command :  
+  https://pytorch.org/get-started/locally/
+- Run this only if you have trouble running **launch_scientist**
 
 ```bash
 # Install torch v 12.4
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
-
 ```
 
-### Tex Tool(PDF 생성 도구) 설치
+### Install Tex Tool (PDF creation tool)
 
 ##### Install pdflatex for Ubuntu
+
+- The following command is only executable on Ubuntu Linux. For Windows installation, see the following:
 
 ```bash
 sudo apt-get install texlive-full
 ```
 
-- `sudo apt-get install textlive-full` 명령은 **Ubuntu** Linux 명령으로 윈도우에서는 다음과 같이 다운로드 하여 설치한다.
+##### Download and install Windows version
 
-##### Windows 버전 다운로드 및 설치
+- **textlive-full**, **window** version download : `https://www.tug.org/texlive/windows.html`
+- You need to download and install it from the link above. It will take quite a while to install.
 
-- **textlive-full**, **window** 버전 댜운로드 : `https://www.tug.org/texlive/windows.html`
-- 위의 링크에서 다운로드 받아 설치해야 한다. 설치하는 시간이 상당히 오래 걸린다.
-
-- 설치 후 다음과 같은 경고가 나오는 경우
+- If you see the following warning after installation, run the **update command** below.
 
 ```bash
 *** PLEASE READ THIS WARNING ***********************************
@@ -139,17 +150,17 @@ in a browser; you may need to specify a mirror explicitly.
 ******************************************************************
 ```
 
-- 업데이트 명령 실행
+- TexLive **Running the Update Command**
 
 ```bash
 tlmgr update --all --reinstall-forcibly-removed
 ```
 
-## Setup NanoGPT 모델 학습 및 생성
+## Setup NanoGPT
 
 ### Prepare NanoGPT data
 
-- 모델 학습 및 문서 생성을 하기전에 다음의 스크립트를 먼저 실행해야 한다.
+- Before training the model and generating documentation, you must first run the following script.
 
 ```bash
 python data/enwik8/prepare.py
@@ -157,18 +168,22 @@ python data/shakespeare_char/prepare.py
 python data/text8/prepare.py
 ```
 
-## Create baseline runs (machine dependent)
+### Project Start : Model training and sample paper generation
 
-- Set up NanoGPT baseline run
+### 프로젝트 실행전에 점검할 사항
 
-```bash
-cd templates/nanoGPT && python experiment.py --out_dir run_0
-python plot.py
-```
+- You must obtain an API key from openAI (paid) and the environment variable **OPENAI_API_KEY** must be set.
+- You must register at https://www.semanticscholar.org/product/api and obtain an API key (free of charge).
+  The issued API key must be set in the environment variable **S2_API_KEY**
 
 ```bash
 conda activate ai_scientist
+
 # Run the paper generation.
+
+# If you use openAI's gpt-4o-xx
 python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2
+
+# If you use claude-3-6-sonet-xx
 python launch_scientist.py --model "claude-3-5-sonnet-20240620" --experiment nanoGPT_lite --num-ideas 2
 ```
