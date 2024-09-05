@@ -111,9 +111,7 @@ You can suppress this exception and fall back to eager by setting:
 pip install https://huggingface.co/madbuda/triton-windows-builds/resolve/main/triton-2.1.0-cp311-cp311-win_amd64.whl
 ```
 
-```bash
 ![alt text](./images/image-4.png)
-```
 
 - `C:\Users\USERNAME\AppData\Local\Temp` 폴더내용 지우고 다시 실행
 
