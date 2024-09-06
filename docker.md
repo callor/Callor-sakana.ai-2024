@@ -4,6 +4,10 @@
 ```bash
 docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
 ```
+## 3초마다 CUDA 실행상황 알아보기
+```bash
+docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi -l 3
+```
 
 ## 최신버전 Sakana Image 다운로드
 ```bash
@@ -12,7 +16,7 @@ docker pull t4646/ai-scientist:20240817
 
 ## endpoint Script
 ```bash
-docker run -d --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" t4646/ai-scientist:20240817 --model gpt-4o-2024-05-13 --experiment nanoGPT --num-ideas 2
+docker run -d --rm --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" t4646/ai-scientist:20240817 --model gpt-4o-2024-05-13 --experiment nanoGPT --num-ideas 2
 ```
 
 
@@ -34,7 +38,7 @@ docker pull t4646/ai-scientist:20240817
 
 ## interactive
 ```bash
-docker run -it --env-file=/c/app/ai-project/.env --entrypoint /bin/bash t4646/ai-scientist:20240817
+docker run --gpus all -it --env-file=/c/app/ai-project/.env --entrypoint /bin/bash t4646/ai-scientist:20240817
 ```
 
 ## docker 수정 후 실행중인 컨테이너 다른이름으로 이미지 복제 저장

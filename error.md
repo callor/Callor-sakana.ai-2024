@@ -1,12 +1,12 @@
-# 오류 해결방법 모음
+# A collection of troubleshooting methods
 
-### Visual Studio 설치
+### Visual Studio install
 
-- 모델학습 과정에서 다음과 같은 오류(fbgemm.dll 찾지 못함) 발생하면  
-  Visual Studio 설치해주어야 한다. 설치옵션에서 **C/C++ 개발환경을 반드시 체크하고 설치한다**
+- If the following error (fbgemm.dll not found) occurs during the model learning process,  
+you must install Visual Studio. In the installation options, be sure to check **C/C++ development environment and install**
 
 ```bash
-# python experiment.py --out_dir run_0 명령실행 오류
+# python experiment.py --out_dir run_0 Command execution error
 
 Traceback (most recent call last):
   File "C:\Users\USERNAME\Documents\workspace\Callor-sakana.ai-2024\AI-Scientist\templates\nanoGPT\experiment.py", line 10, in <module>
@@ -41,7 +41,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 ```
 
-## 컴파일 오류 1
+## Compile error 1
 
 ```bash
 tokens per iteration will be: 16,384
@@ -66,7 +66,7 @@ Traceback (most recent call last):
 ![alt text](./images/error/image-2.png)
 
 ```py
-# 461 라인 근처에서 다음 코드를 찾아서 아래와 같이 변경
+# Find the following code near line 461 and change it as follows:
 # initialize a GradScaler. If enabled=False scaler is a no-op
 scaler = torch.cuda.amp.GradScaler(enabled=(dtype == "float16"))
 
@@ -74,7 +74,7 @@ scaler = torch.cuda.amp.GradScaler(enabled=(dtype == "float16"))
 scaler = torch.amp.GradScaler('cuda',enabled=(dtype == "float16"))
 ```
 
-## 컴파일 오류 2
+## compile error 2
 
 ```bash
 C:\Users\callor\anaconda3\envs\ai_scientist\Lib\site-packages\torch\_dynamo\utils.py:1903: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
@@ -113,8 +113,22 @@ pip install https://huggingface.co/madbuda/triton-windows-builds/resolve/main/tr
 
 ![alt text](./images/error/image-4.png)
 
-- `C:\Users\USERNAME\AppData\Local\Temp` 폴더내용 지우고 다시 실행
+- `C:\Users\USERNAME\AppData\Local\Temp` Delete the folder contents and run again
 
 ```bash
 pip3 install --force-reinstall --pre torch torchtext torchvision torchaudio torchrec --extra-index-url https://download.pytorch.org/whl/nightly/cu121
+```
+
+- If the following error occurs during model learning, create the following path and file and run again.
+```bash
+C:\app\ai-project\AI-Scientist\templates\nanoGPT\run_0\final_info.json
+```
+```bash
+Processing idea: adaptive_block_size
+Failed to evaluate idea adaptive_block_size: [Errno 2] No such file or directory: 'templates\\nanoGPT\\run_0\\final_info.json'
+Processing idea: adaptive_dropout
+Failed to evaluate idea adaptive_dropout: [Errno 2] No such file or directory: 'templates\\nanoGPT\\run_0\\final_info.json'
+Processing idea: memory_buffer_gpt
+Failed to evaluate idea memory_buffer_gpt: [Errno 2] No such file or directory: 'templates\\nanoGPT\\run_0\\final_info.json'
+All ideas evaluated.
 ```

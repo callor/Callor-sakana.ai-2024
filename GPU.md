@@ -12,28 +12,28 @@
 ## Anaconda Install
 #### Download and Install from https://www.anaconda.com/download/success  
 
-![alt text](image-17.png)
+![alt text](./images/gpu/image-17.png)
 
 #### If your Windows account name is not in English,, Make sure to install with **All User** experience
 
-![alt text](image.png)
+![alt text](./images/gpu/image.png)
 
 #### Remember where Anaconda is installed  : **Just Me**
 
-![alt text](image-16.png)
+![alt text](./images/gpu/image-16.png)
 
 #### Remember where Anaconda is installed  : **All User**
 
-![alt text](image-1.png)
+![alt text](./images/gpu/image-1.png)
 
 - Check Clear the package cache upon completion
 
-![alt text](image-2.png)
+![alt text](./images/gpu/image-2.png)
 
 - Once the installation is complete, open the Aaconda installation folder and check the location of the envs folder.
 - Anaconda virtual machine will be installed in this folder.
 
-![alt text](image-3.png)
+![alt text](./images/gpu/image-3.png)
 
 - For convenience, let's add the Anaconda environment to the **path** item in the Windows environment variables.
 ```
@@ -42,12 +42,12 @@ C:\ProgramData\anaconda3\conda\bin;
 C:\ProgramData\anaconda3\Scripts
 C:\ProgramData\anaconda3\conda\bin
 ```
-![alt text](image-4.png)
-![alt text](image-6.png)
+![alt text](./images/gpu/image-4.png)
+![alt text](./images/gpu/image-6.png)
 
 - Start vscode and run the conda command in the terminal.
 - You should see a screen similar to the following
-![alt text](image-7.png)
+![alt text](./images/gpu/image-7.png)
 
 ## Creating a project environment
 
@@ -138,18 +138,18 @@ run the `touch ~/.bash_profile` command and then run the `source ~/.bash_profile
 
 - You should see the message `(ai_scientist)` at the `bash shell` prompt.
 
-![alt text](image-9.png)
+![alt text](./images/gpu/image-9.png)
 
 #### If you are using cmd.exe in Windows, run it as follows:
 ```cmd.exe
 conda init cmd.exe
 ```
 
-![alt text](image-18.png)
+![alt text](./images/gpu/image-18.png)
 
 - Then the prompt will change to:
 
-![alt text](image-19.png)
+![alt text](./images/gpu/image-19.png)
 
 ### Install pypi requirements
 ```bash
@@ -225,16 +225,16 @@ tlmgr update --all --reinstall-forcibly-removed
 ```bash
 python data/enwik8/prepare.py
 ```
-![alt text](image-8.png)
+![alt text](./images/gpu/image-8.png)
 
 ```bash
 python data/shakespeare_char/prepare.py
 ```
-![alt text](image-10.png)
+![alt text](./images/gpu/image-10.png)
 ```bash
 python data/text8/prepare.py
 ```
-![alt text](image-11.png)
+![alt text](./images/gpu/image-11.png)
 
 ### Project Start : Model training and sample paper generation
 
@@ -253,13 +253,18 @@ conda activate ai_scientist
 
 ### Run the paper generation.
 
+#### Create a result generation folder. Otherwise, an error will occur during model training and execution will stop.
+```
+\AI-Scientist\templates\nanoGPT\run_0\final_info.json
+```
+
 #### If you use openAI's gpt-4o-xx
 
 ```bash
 python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2
 ```
 #### If you see `Using GPUs:[]` among the messages that appear on the screen after executing the command, the GPU is not activated.
-![alt text](image-12.png)
+![alt text](./images/gpu/image-12.png)
 #### At this time, you need to install conda GPU Dependency and torch additional Dependencies by running the following commands.
 
 - Add cuda GPU Dependency
@@ -278,7 +283,7 @@ python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --nu
 ```
 #### The project is in progress with GPU 0 in use( Using GPUs[0] )
 
-![alt text](image-13.png)
+![alt text](./images/gpu/image-13.png)
 
 - If multiple GPUs (Graphic Cards) are installed, it will probably look like Using GPUs[0,1,2]
 
@@ -287,8 +292,12 @@ python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --nu
 
 #### Although I have not yet obtained a completed paper because a failure occurred in the middle of the process and the process stopped, I have currently trained the model using the `openAI API` and `Semantic Scholar API` and executed it up to the stage before paper creation.
 
-#### It costs about $5 to $6 to use the OpenAI API to study a paper on a basic topic.
 
+#### 이미 생성된 Idea 재사용하면서 진행하기
+```bash
+python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2 --skip-idea-generation
+```
+--skip-idea-generation
 
 
 
