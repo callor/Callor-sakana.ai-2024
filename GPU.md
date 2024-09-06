@@ -203,26 +203,43 @@ tlmgr update --all --reinstall-forcibly-removed
 
 ```bash
 python data/enwik8/prepare.py
+```
+![alt text](image-8.png)
+
+```bash
 python data/shakespeare_char/prepare.py
+```
+![alt text](image-10.png)
+```bash
 python data/text8/prepare.py
 ```
+![alt text](image-11.png)
 
 ### Project Start : Model training and sample paper generation
 
-### 프로젝트 실행전에 점검할 사항
+### The following API keys must be registered in the environment variables before running the project.
 
 - You must obtain an API key from openAI (paid) and the environment variable **OPENAI_API_KEY** must be set.
 - You must register at https://www.semanticscholar.org/product/api and obtain an API key (free of charge).
   The issued API key must be set in the environment variable **S2_API_KEY**
 
+
+### The way projects are run has changed on September 2, 2024.
+
 ```bash
 conda activate ai_scientist
+```
 
+```
 # Run the paper generation.
-
 # If you use openAI's gpt-4o-xx
+```
+```bash
 python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2
-
+```
+```
 # If you use claude-3-6-sonet-xx
+```
+```bash
 python launch_scientist.py --model "claude-3-5-sonnet-20240620" --experiment nanoGPT_lite --num-ideas 2
 ```
