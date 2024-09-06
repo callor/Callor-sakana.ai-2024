@@ -5,7 +5,7 @@
 
 
 ## 작은 셰익스피어, 캐릭터 수준
-- https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt'
+- https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
 - 다운로드 불가
 - 옛날의 찰리 셰익스피어로 유명한 작은 셰익스피어 :) 캐릭터 수준에서 다루었습니다.
 - train.bin에는 1,003,854개의 토큰이 있습니다
