@@ -11,12 +11,15 @@
 ## Anaconda Install
 - Download and Install from https://www.anaconda.com/download/success  
 - Make sure to install with **All User** experience
+
 ![alt text](image.png)
 
 - Remember where Anaconda is installed
+
 ![alt text](image-1.png)
 
 - Check Clear the package cache upon completion
+
 ![alt text](image-2.png)
 
 - Once the installation is complete, open the Aaconda installation folder and check the location of the envs folder.
