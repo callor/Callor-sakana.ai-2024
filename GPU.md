@@ -1,6 +1,7 @@
 # Getting started with Sakana.ai GPU version Windows project
 
 - When running in Windows **Powershell**, many errors occur, so let's work in **git bash shell** after installing **git-scm**.
+- It is also possible in Windows cmd.exe environment. There is a difference in the **conda init** command below.
 - Sakana.ai Official Site : https://sakana.ai/ai-scientist/
 
 ## Visual Studio Install
@@ -9,12 +10,19 @@
 - Make sure to check and install the **C/C++ development environment** in the installation options.
 
 ## Anaconda Install
-- Download and Install from https://www.anaconda.com/download/success  
-- Make sure to install with **All User** experience
+#### Download and Install from https://www.anaconda.com/download/success  
+
+![alt text](image-17.png)
+
+#### If your Windows account name is not in English,, Make sure to install with **All User** experience
 
 ![alt text](image.png)
 
-- Remember where Anaconda is installed
+#### Remember where Anaconda is installed  : **Just Me**
+
+![alt text](image-16.png)
+
+#### Remember where Anaconda is installed  : **All User**
 
 ![alt text](image-1.png)
 
@@ -115,8 +123,7 @@ conda create -n ai_scientist python=3.11
 ```bash
 conda activate ai_scientist
 ```
-- If a `CondaError` error occurs when running the `conda activate` command
-  After running the `source` command, run `conda activate` again
+### If a `CondaError` error occurs when running the `conda activate` command   After running the `source` command, run `conda activate` again
 
 ```bash
 CondaError: Run 'conda init' before 'conda activate'
@@ -133,7 +140,18 @@ run the `touch ~/.bash_profile` command and then run the `source ~/.bash_profile
 
 ![alt text](image-9.png)
 
-# Install pypi requirements
+#### If you are using cmd.exe in Windows, run it as follows:
+```cmd.exe
+conda init cmd.exe
+```
+
+![alt text](image-18.png)
+
+- Then the prompt will change to:
+
+![alt text](image-19.png)
+
+### Install pypi requirements
 ```bash
 pip3 install -r requirements.txt
 ```
@@ -233,16 +251,53 @@ python data/text8/prepare.py
 conda activate ai_scientist
 ```
 
-```
-# Run the paper generation.
-# If you use openAI's gpt-4o-xx
-```
+### Run the paper generation.
+
+#### If you use openAI's gpt-4o-xx
+
 ```bash
 python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2
 ```
+#### If you see `Using GPUs:[]` among the messages that appear on the screen after executing the command, the GPU is not activated.
+![alt text](image-12.png)
+#### At this time, you need to install conda GPU Dependency and torch additional Dependencies by running the following commands.
+
+- Add cuda GPU Dependency
+```bash
+conda install cuda -c nvidia/label/cuda-12.4
 ```
-# If you use claude-3-6-sonet-xx
+
+- Install GPU enabled torch
+```bash
+# Install torch v 12.4
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 ```
+- 다시 다음 명령을 실행한다
+```bash
+python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2
+```
+#### The project is in progress with GPU 0 in use( Using GPUs[0] )
+
+![alt text](image-13.png)
+
+- If multiple GPUs (Graphic Cards) are installed, it will probably look like Using GPUs[0,1,2]
+
+#### Now you have to wait about 30 to 40 minutes.
+#### Let's watch a movie while looking at the messages that appear on the terminal screen sometimes!! But, use a different computer to watch the movie.
+
+#### Although I have not yet obtained a completed paper because a failure occurred in the middle of the process and the process stopped, I have currently trained the model using the `openAI API` and `Semantic Scholar API` and executed it up to the stage before paper creation.
+
+#### It costs about $5 to $6 to use the OpenAI API to study a paper on a basic topic.
+
+- Before starting the project
+
+![alt text](image-15.png)
+![alt text](image-14.png)
+
+
+
+#### If you use claude-3-6-sonet-xx
+
 ```bash
 python launch_scientist.py --model "claude-3-5-sonnet-20240620" --experiment nanoGPT_lite --num-ideas 2
 ```
