@@ -12,11 +12,12 @@ docker pull t4646/ai-scientist:20240817
 
 ## endpoint Script
 ```bash
-docker run --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" t4646/ai-scientist:20240817 --model gpt-4o-2024-05-13 --experiment 2d_diffusion --num-ideas 2
+docker run -d --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" t4646/ai-scientist:20240817 --model gpt-4o-2024-05-13 --experiment nanoGPT --num-ideas 2
 ```
 
+
 ```bash
-docker run --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" t4646/ai-scientist:20240817 --model gpt-4o-2024-05-13 --experiment nanoGPT --num-ideas 2
+docker run --gpus all --memory 10g --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" t4646/ai-scientist:20240817 --model gpt-4o-2024-05-13 --experiment 2d_diffusion --num-ideas 2
 ```
 
 ```shell
