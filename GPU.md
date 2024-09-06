@@ -289,10 +289,6 @@ python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --nu
 
 #### It costs about $5 to $6 to use the OpenAI API to study a paper on a basic topic.
 
-- Before starting the project
-
-![alt text](image-15.png)
-![alt text](image-14.png)
 
 
 
