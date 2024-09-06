@@ -33,7 +33,7 @@ Traceback (most recent call last):
                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
-![alt text]./images/(image.png)
+![alt text]./images/error/(image.png)
 
 ```bash
 # Install torch v 12.4
@@ -63,7 +63,7 @@ Traceback (most recent call last):
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
-![alt text](./images/image-2.png)
+![alt text](./images/error/image-2.png)
 
 ```py
 # 461 라인 근처에서 다음 코드를 찾아서 아래와 같이 변경
@@ -105,13 +105,13 @@ You can suppress this exception and fall back to eager by setting:
     torch._dynamo.config.suppress_errors = True
 ```
 
-![alt text](./images/image-1.png)
+![alt text](./images/error/image-1.png)
 
 ```bash
 pip install https://huggingface.co/madbuda/triton-windows-builds/resolve/main/triton-2.1.0-cp311-cp311-win_amd64.whl
 ```
 
-![alt text](./images/image-4.png)
+![alt text](./images/error/image-4.png)
 
 - `C:\Users\USERNAME\AppData\Local\Temp` 폴더내용 지우고 다시 실행
 

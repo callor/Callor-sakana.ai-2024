@@ -6,7 +6,37 @@
 ## Visual Studio Install
 
 - Download and Install from https://visualstudio.microsoft.com/ko/downloads/
-  Make sure to check and install the **C/C++ development environment** in the installation options.
+- Make sure to check and install the **C/C++ development environment** in the installation options.
+
+## Anaconda Install
+- Download and Install from https://www.anaconda.com/download/success  
+- Make sure to install with **All User** experience
+![alt text](image.png)
+
+- Remember where Anaconda is installed
+![alt text](image-1.png)
+
+- Check Clear the package cache upon completion
+![alt text](image-2.png)
+
+- Once the installation is complete, open the Aaconda installation folder and check the location of the envs folder.
+- Anaconda virtual machine will be installed in this folder.
+
+![alt text](image-3.png)
+
+- For convenience, let's add the Anaconda environment to the **path** item in the Windows environment variables.
+```
+C:\ProgramData\anaconda3\bin;
+C:\ProgramData\anaconda3\conda\bin;
+C:\ProgramData\anaconda3\Scripts
+C:\ProgramData\anaconda3\conda\bin
+```
+![alt text](image-4.png)
+![alt text](image-6.png)
+
+- Start vscode and run the conda command in the terminal.
+- You should see a screen similar to the following
+![alt text](image-7.png)
 
 ## Creating a project environment
 
@@ -65,12 +95,7 @@ git pull
 
 ```bash
 conda create -n ai_scientist python=3.11
-conda activate ai_scientist
-
-# Install pypi requirements
-pip3 install -r requirements.txt
 ```
-
 - If the following error occurs when running `conda create`, run clean and then `conda create` again.
 
 ```bash
@@ -84,6 +109,9 @@ conda clean -i
 conda create -n ai_scientist python=3.11
 ```
 
+```bash
+conda activate ai_scientist
+```
 - If a `CondaError` error occurs when running the `conda activate` command
   After running the `source` command, run `conda activate` again
 
@@ -94,6 +122,17 @@ CondaError: Run 'conda init' before 'conda activate'
 conda init bash
 source ~/.bash_profile
 conda activate ai_scientist
+```
+- If the `source ~/.bash_profile` command returns a message that the `.bash_profile` file does not exist,  
+run the `touch ~/.bash_profile` command and then run the `source ~/.bash_profile` command.
+
+- You should see the message `(ai_scientist)` at the `bash shell` prompt.
+
+![alt text](image-9.png)
+
+# Install pypi requirements
+```bash
+pip3 install -r requirements.txt
 ```
 
 ### Activate Anaconda GPU
