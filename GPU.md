@@ -258,15 +258,6 @@ conda activate ai_scientist
 \AI-Scientist\templates\nanoGPT\run_0\final_info.json
 ```
 
-#### If you use openAI's gpt-4o-xx
-
-```bash
-python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2
-```
-#### If you see `Using GPUs:[]` among the messages that appear on the screen after executing the command, the GPU is not activated.
-![alt text](./images/gpu/image-12.png)
-#### At this time, you need to install conda GPU Dependency and torch additional Dependencies by running the following commands.
-
 - Add cuda GPU Dependency
 ```bash
 conda install cuda -c nvidia/label/cuda-12.4
@@ -275,12 +266,37 @@ conda install cuda -c nvidia/label/cuda-12.4
 - Install GPU enabled torch
 ```bash
 # Install torch v 12.4
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124 --upgrade
 ```
-- 다시 다음 명령을 실행한다
+
+### If the following error occurs while running the project, you need to install a different version of torch.
+```
+C:\Users\callor\.conda\envs\ai_scientist\Lib\site-packages\torch\_dynamo\utils.py:1903: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  return node.target(*args, **kwargs)
+```  
+
+Change **torch** version if error occurs
+
+```bash
+pip3 install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 xformers --index-url https://download.pytorch.org/whl/cu121 --upgrade
+python -m pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu124 --upgrade
+python -m pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124 --upgrade
+```
+
+### Create baseline runs (machine dependent)
+- Set up NanoGPT baseline run
+- NOTE: YOU MUST FIRST RUN THE PREPARE SCRIPTS ABOVE!
+```bash
+cd templates/nanoGPT && python experiment.py --out_dir run_0 && python plot.py
+python experiment.py --out_dir run_0 && python plot.py
+```
+
+#### If you use openAI's gpt-4o-xx
+
 ```bash
 python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2
 ```
+
 #### The project is in progress with GPU 0 in use( Using GPUs[0] )
 
 ![alt text](./images/gpu/image-13.png)
