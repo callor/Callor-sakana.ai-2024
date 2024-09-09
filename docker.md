@@ -43,8 +43,17 @@ docker run --gpus all --env-file=/c/app/ai-project/.env -v "/$(pwd)/templates:/c
 
 
 ```bash
-docker pull t4646/ai-scientist:20240817
+docker pull nouranhamdy1998/ai-scientist
 ````
+```bash
+docker run --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" docker pull nouranhamdy1998/ai-scientist --model gpt-4o-2024-05-13 --experiment 2d_diffusion --num-ideas 1
+```
+
+
+```bash
+docker pull nouranhamdy1998/ai-scientist
+```
+
 
 ## interactive
 ```bash
