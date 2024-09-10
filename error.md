@@ -67,7 +67,7 @@ Traceback (most recent call last):
 
 ```py
 # Find the following code near line 461 and change it as follows:
-# initialize a GradScaler. If enabled=False scaler is a no-op
+# initialize a GradScaler. If enabled=False scaler is a no-opls
 scaler = torch.cuda.amp.GradScaler(enabled=(dtype == "float16"))
 
 # initialize a GradScaler. If enabled=False scaler is a no-op

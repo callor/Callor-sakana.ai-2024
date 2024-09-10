@@ -61,7 +61,8 @@ docker pull nouranhamdy1998/ai-scientist
 
 ## interactive
 ```bash
-docker run --gpus all -it --env-file=/c/app/ai-project/.env --entrypoint /bin/bash t4646/ai-scientist:20240817
+docker run --gpus all -it --env-file=/app/ai-project/.env --entrypoint /bin/bash t4646/ai-scientist:20240817
+docker run --gpus all -it --env-file=/app/ai-project/.env --entrypoint /bin/bash callor:20240910
 ```
 
 ## docker 수정 후 실행중인 컨테이너 다른이름으로 이미지 복제 저장

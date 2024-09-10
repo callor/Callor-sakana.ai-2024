@@ -327,3 +327,8 @@ python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --nu
 ```bash
 python launch_scientist.py --model "claude-3-5-sonnet-20240620" --experiment nanoGPT_lite --num-ideas 2
 ```
+
+
+```sh
+python experiment.py --out_dir=run_1
+```
