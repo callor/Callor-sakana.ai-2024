@@ -234,6 +234,11 @@ python data/shakespeare_char/prepare.py
 ```bash
 python data/text8/prepare.py
 ```
+
+```bash
+python data/enwik8/prepare.py && python data/shakespeare_char/prepare.py && python data/text8/prepare.py
+```
+
 ![alt text](./images/gpu/image-11.png)
 
 ### Project Start : Model training and sample paper generation

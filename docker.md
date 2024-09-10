@@ -29,6 +29,10 @@ docker run --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app
 ```
 
 ```shell
+docker run --gpus all --env-file=/app/ai-project/.env -v "/app/Ai-Scientist/templates:/app/ai-project/AI-Scientist/templates" t4646/ai-scientist:20240817 --model gpt-4o-2024-05-13 --experiment nanoGPT --num-ideas 2
+```
+
+```shell
 docker run -d --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" t4646/ai-scientist:20240817 --model gpt-4o-2024-05-13 --experiment nanoGPT_lite --num-ideas 2
 ```
 
@@ -46,7 +50,7 @@ docker run --gpus all --env-file=/c/app/ai-project/.env -v "/$(pwd)/templates:/c
 docker pull nouranhamdy1998/ai-scientist
 ````
 ```bash
-docker run --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" docker pull nouranhamdy1998/ai-scientist --model gpt-4o-2024-05-13 --experiment 2d_diffusion --num-ideas 1
+docker run --gpus all --env-file=/app/ai-project/.env -v "/$(pwd)/templates:/app/ai-project/AI-Scientist/templates" nouranhamdy1998/ai-scientist --model gpt-4o-2024-05-13 --experiment 2d_diffusion --num-ideas 1
 ```
 
 
