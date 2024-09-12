@@ -292,7 +292,7 @@ python -m pip install --pre torch torchvision torchaudio --index-url https://dow
 - Set up NanoGPT baseline run
 - NOTE: YOU MUST FIRST RUN THE PREPARE SCRIPTS ABOVE!
 ```bash
-cd templates/nanoGPT && python experiment.py --out_dir run_0 && python plot.py
+cd templates/nanoGPT_callor && python experiment.py --out_dir run_0 && python plot.py
 python experiment.py --out_dir run_0 && python plot.py
 ```
 
