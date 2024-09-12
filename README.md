@@ -11,9 +11,13 @@
 
 ### :crystal_ball: [Documentation on running the GPU (CUDA) version : In progress](./GPU.md)
 
+### :pray: [Documentation on running the WSL base ubuntu Linux : In progress](./ubuntu.md)
+
 ### :dolphin: [Running the CPU version of the document: Not recommended](./CPU.md)
 
 ### :water_buffalo: [Troubleshooting Documentation: In progress](./error.md)
+
+
 
 <hr/>
 
