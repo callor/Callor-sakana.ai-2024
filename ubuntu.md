@@ -99,7 +99,18 @@ conda activate ai_scientist
 sudo apt-get install texlive-full
 
 # Install pypi requirements
-pip install -r requirements.txt
+# AI-Scientist 폴더에서 실행
+pip3 install -r requirements.txt
+```
+
+#### requirements.txt 에  torch 설치코드가 있으나, CUDA 버전과 호환이 되지 않는 것으로 보인다 다음 명령을 다시 한번 실행한다
+```shell
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124 --upgrade
+```
+
+#### conda 의 가상환경을 새로 만들고 가상환경에서 CUDA 를 다시 한번 설치한다.
+```shell
+conda install cuda -c nvidia/label/cuda-12.4
 ```
 
 - 환경변수 세팅
