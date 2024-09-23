@@ -299,7 +299,7 @@ python experiment.py --out_dir run_0 && python plot.py
 #### If you use openAI's gpt-4o-xx
 
 ```bash
-python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT_Callor --num-ideas 2
+python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2
 ```
 
 #### The project is in progress with GPU 0 in use( Using GPUs[0] )

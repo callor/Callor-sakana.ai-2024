@@ -1,0 +1,3 @@
+[submodule "AI-Scientist"]
+	path = AI-Scientist
+	url = https://github.com/callor/AI-Scientist.git
