@@ -19,7 +19,7 @@ wsl --install
 ```bash
 wsl --list --online
 ```
-![alt text](image-3.png)
+![alt text](./u_images/image-3.png)
 
 이 프로젝트에서는 `ubuntu 24.04.lte` 버전을 설치하였다.
 
@@ -28,13 +28,13 @@ wsl --install Ubuntu-24.04
 ```
 
 ## ubuntu 실행하기
-![alt text](image-4.png)
+![alt text](./u_images/image-4.png)
 
 바탕화면에서 마우스 우클릭 `터미널 열기`를 선택
-![alt text](image-5.png)
+![alt text](./u_images/image-5.png)
 
 터미널 창에서 `ubuntu-xx` 를 선택하면 `linux shell` 창이 나타난다.
-![alt text](image-6.png) 
+![alt text](./u_images/image-6.png) 
 
 ## 아나콘다 설치
 지금부터의 명령은 `linux shell` 에서 입력해야 한다
@@ -64,7 +64,7 @@ sudp apt upgrade
 - `CUDA` 용 `torch` 재 설치
 - https://pytorch.org/get-started/locally/ 여기에 접속하여 자신의 GPU 에 맞는 `CUDA` 용 `torch` 를 찾아서 재 설치한다
 
-![alt text](image-7.png)
+![alt text](./u_images/image-7.png)
 
 - `Run this command` 항목의 스크립트를 복사하여 `shell`에서 실행한다. 이때 끝부분에 반드시 `--upgrade` 를 붙인다
 ```shell
@@ -159,7 +159,7 @@ python experiment.py --out_dir run_5 && python plot.py
 
 #### 이 과정에서는 openAI 의 API 를 활용하지 않는다. GPU 의 사용량이 100%에서 진행되는 것을 볼 수 있다
 
-![alt text](image-1.png)
+![alt text](./u_images/image-1.png)
 
 
 
