@@ -306,17 +306,16 @@ python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --nu
 
 ![alt text](./images/gpu/image-13.png)
 
-- If multiple GPUs (Graphic Cards) are installed, it will probably look like Using GPUs[0,1,2]
+If multiple GPUs (Graphic Cards) are installed, it will probably look like Using GPUs[0,1,2]
 
 #### Now you have to wait about 30 to 40 minutes.
-#### Let's watch a movie while looking at the messages that appear on the terminal screen sometimes!! But, use a different computer to watch the movie.
+#### Let's watch a movie while looking at the messages that appear on the terminal screen sometimes!! But, use a different computer to watch the movie
 
-#### Although I have not yet obtained a completed paper because a failure occurred in the middle of the process and the process stopped, I have currently trained the model using the `openAI API` and `Semantic Scholar API` and executed it up to the stage before paper creation.
-
+#### Although I have not yet obtained a completed paper because a failure occurred in the middle of the process and the process stopped, I have currently trained the model using the `openAI API` and `Semantic Scholar API` and executed it up to the stage before paper creation
 
 #### 이미 생성된 Idea 재사용하면서 진행하기
 ```bash
-python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 2 --skip-idea-generation
+python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas  --skip-idea-generation
 ```
 --skip-idea-generation
 
