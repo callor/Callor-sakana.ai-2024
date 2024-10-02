@@ -175,7 +175,7 @@ python data/text8/prepare.py
 #### 기준선 생성은 1회 실시한다
 
 ```shell
-cd templates/nanoGPT && python experiment.py --out_dir run_0 && 
+cd templates/nanoGPT && python experiment.py --out_dir run_0 && python plot.py
 ```
 
 #### `entwik8`, `shakespeare_char_input`, `text8` 데이터를 사용하여 구체적 모델 생성을 위한 기준선 모델을 생성한다
