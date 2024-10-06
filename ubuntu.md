@@ -191,4 +191,8 @@ cd templates/nanoGPT && python experiment.py --out_dir run_0 && python plot.py
 
 #### 본 학습은 코드상 5회 실행되며, 본 학습이 완료되는데는 약 35시간 정도가 소요된다
 
+#### If you use openAI's gpt-4o-xx
 
+```bash
+python launch_scientist.py --model "gpt-4o-2024-05-13" --experiment nanoGPT --num-ideas 3
+```
