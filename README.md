@@ -17,7 +17,9 @@
 
 ### :water_buffalo: [Troubleshooting Documentation: In progress](./error.md)
 
+### [Add Korean comments to the experiment.py file](./experiment-callor.py)
 
+### [Add Korean comments to the launch_scientist file](./launch_scientist-callor.py)
 
 <hr/>
 
